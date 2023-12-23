@@ -1,0 +1,101 @@
+@use '../abstracts/' as *;
+
+%css-vars {
+    --#{$prefix}nav-link-padding-x: #{$nav-link-padding-x};
+    --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
+    --#{$prefix}nav-link-gap: #{$nav-link-gap};
+    --#{$prefix}nav-link-font-size: #{$nav-link-font-size};
+    --#{$prefix}nav-link-font-weight: #{$nav-link-font-weight};
+    --#{$prefix}nav-link-color: #{$nav-link-color};
+    --#{$prefix}nav-link-hover-color: #{$nav-link-hover-color};
+    --#{$prefix}nav-link-disabled-color: #{$nav-link-disabled-color};
+
+    --#{$prefix}nav-tabs-link-min-height: #{$nav-tabs-link-min-height};
+    --#{$prefix}nav-tabs-link-line-height: #{$nav-tabs-link-line-height};
+    --#{$prefix}nav-tabs-link-hover-bg: #{$nav-tabs-link-hover-bg};
+
+    --#{$prefix}nav-underline-link-height: #{$nav-underline-link-height};
+    --#{$prefix}nav-underline-link-width: #{$nav-underline-link-width};
+    --#{$prefix}nav-underline-link-bg: #{$nav-underline-link-bg};
+    --#{$prefix}nav-underline-link-opacity: #{$nav-underline-link-opacity};
+}
+
+.nav {
+    @extend %css-vars;
+
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: var(--#{$prefix}nav-link-gap);
+    }
+
+    &__item {
+
+    }
+
+    &__link {
+        font-size: var(--#{$prefix}nav-link-font-size);
+        font-weight: var(--#{$prefix}nav-link-font-weight);
+        color: var(--#{$prefix}nav-link-color);
+        white-space: nowrap;
+        @include transition($nav-link-transition);
+
+        &:hover,
+        &:focus,
+        &.active {
+            color: var(--#{$prefix}nav-link-hover-color);
+        }
+
+        &.disabled {
+            color: var(--#{$prefix}nav-link-disabled-color);
+            pointer-events: none;
+            cursor: default;
+        }
+    }
+}
+
+// tabs
+.nav__list--tabs{
+    .nav__link {
+        display: block;
+        min-height: var(--#{$prefix}nav-tabs-link-min-height);
+        padding: 0 var(--#{$prefix}nav-link-padding-x);
+        line-height: var(--#{$prefix}nav-tabs-link-line-height);
+        @include transition($nav-link-transition);
+
+        &:hover,
+        &:focus,
+        &.active {
+            background: var(--#{$prefix}nav-tabs-link-hover-bg);
+        }
+
+        &.disabled {
+            background: none;
+        }
+    }
+}
+
+// underline
+.nav__list--underline {
+    .nav__link {
+        position: relative;
+
+        &::after {
+            content: '';
+            height: var(--#{$prefix}nav-underline-link-height);
+            width: var(--#{$prefix}nav-underline-link-width);
+            background: var(--#{$prefix}nav-underline-link-bg);
+            position: absolute;
+            left: 0;
+            bottom: -.8rem;
+            @include transition($nav-underline-link-transition);
+            opacity: var(--#{$prefix}nav-underline-link-opacity);
+        }
+
+        &:hover::after,
+        &:focus::after,
+        &.active::after {
+            --#{$prefix}nav-underline-link-opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,68 @@
+@use '../abstracts/' as *;
+@use '../themes/' as *;
+
+%css-vars {
+    --#{$prefix}alert-bg: transparent;
+    --#{$prefix}alert-padding-x: #{$alert-padding-x};
+    --#{$prefix}alert-padding-y: #{$alert-padding-y};
+    --#{$prefix}alert-margin-bottom: #{$alert-margin-bottom};
+    --#{$prefix}alert-color: inherit;
+    --#{$prefix}alert-border-color: transparent;
+    --#{$prefix}alert-border: #{$alert-border-width} solid var(--#{$prefix}alert-border-color);
+    --#{$prefix}alert-border-radius: #{$alert-border-radius};
+    --#{$prefix}alert-link-color: inherit;
+}
+
+.alert {
+    @extend %css-vars;
+    
+    position: relative;
+    padding: var(--#{$prefix}alert-padding-y) var(--#{$prefix}alert-padding-x);
+    margin-bottom: var(--#{$prefix}alert-margin-bottom);
+    color: var(--#{$prefix}alert-color);
+    background-color: var(--#{$prefix}alert-bg);
+    border: var(--#{$prefix}alert-border);
+}
+
+.alert {
+    @extend %css-vars;
+
+    position: relative;
+    background: var(--#{$prefix}alert-bg);
+    padding: var(--#{$prefix}alert-padding-y) var(--#{$prefix}alert-padding-x);
+    margin-bottom: var(--#{$prefix}alert-margin-bottom);
+    color: var(--#{$prefix}alert-color);
+    border: var(--#{$prefix}alert-border);
+    @include border-radius(var(--#{$prefix}alert-border-radius));
+
+    &__heading {
+        color: inherit;
+    }
+
+    &__link {
+        font-weight: $alert-link-font-weight;
+        color: var(--#{$prefix}alert-link-color);
+        text-decoration: underline;
+    }
+
+    &--dismissible {
+        padding-right: $alert-dismissible-padding-r;
+
+        .btn-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            padding: ($alert-padding-y * 1.1) $alert-padding-x;
+        }
+    }
+}
+
+@each $state in map-keys($theme-colors) {
+    .alert--#{$state} {
+        --#{$prefix}alert-color: var(--#{$prefix}#{$state}-text-emphasis);
+        --#{$prefix}alert-bg: var(--#{$prefix}#{$state}-bg-subtle);
+        --#{$prefix}alert-border-color: var(--#{$prefix}#{$state}-border-subtle);
+        --#{$prefix}alert-link-color: var(--#{$prefix}#{$state}-text-emphasis);    
+    }
+}

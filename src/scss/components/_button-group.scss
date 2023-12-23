@@ -1,0 +1,54 @@
+@use '../abstracts/' as *;
+
+.btn-group,
+.btn-group-vertical {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+
+    > .btn {
+        position: relative;
+        flex: 1 1 auto;
+    }
+}
+
+.btn-group {
+
+    > .btn {
+        box-shadow: none;
+
+        &:not(:first-child) {
+            margin-left: calc(#{$btn-border-width} * -1);
+            @include border-start-radius(0);
+        }
+
+        &:not(:last-child) {
+            @include border-end-radius(0);
+        }
+    }
+}
+
+.btn-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.btn-group-vertical {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    > .btn {
+        box-shadow: none;
+
+        &:not(:first-child) {
+            margin-top: calc(#{$btn-border-width} * -1);
+            @include border-top-radius(0);
+        }
+
+        &:not(:last-child) {
+            @include border-bottom-radius(0);
+        }
+    }
+}

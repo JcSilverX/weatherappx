@@ -1,0 +1,25 @@
+@use '../abstracts/' as *;
+
+.weather-details {
+    height: 100%;
+
+    &__content {
+        width: 100%;
+        max-width: 145rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 $spacer;
+    }
+}
+
+.spinner--weather-details {
+    height: 100%;
+
+    display: grid;
+    place-items: center;
+
+    & > .spinner__border {
+        --#{$prefix}spinner-width: 12.8rem;
+        --#{$prefix}spinner-height: 12.8rem;
+    }
+}

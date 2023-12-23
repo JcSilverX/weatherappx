@@ -1,0 +1,21 @@
+@use '../abstracts/' as *;
+
+#jsx-theme {
+
+    + * {
+        button {
+            position: relative;
+            padding-right: 4.5rem;
+            
+            &.active::before {
+                content: url('https://raw.githubusercontent.com/JcSilverX/iconsx/7408d639b7a731533983793142670622b0ee223c/check2.svg');
+                position: absolute;
+                top: .4rem;
+                right: 2rem;
+                width: 1rem;
+                opacity: .7;
+                filter: invert(1) grayscale(100%) brightness(200%);
+            }
+        }
+    }
+}

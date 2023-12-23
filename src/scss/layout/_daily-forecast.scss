@@ -1,0 +1,33 @@
+@use '../abstracts/' as *;
+
+.daily-forecast {
+    background: var(--#{$prefix}body-bg);
+    padding: $spacer;
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+    @include border-radius(calc(var(--#{$prefix}border-radius) + 1.5rem));
+
+    & > .second-heading {
+        font-size: $h4-font-size;
+        margin-bottom: .5rem;
+    }
+
+    &__list {
+
+    }
+
+    &__item {
+
+        &--min-temp {
+            color: var(--#{$prefix}secondary-color);
+        }
+    }
+}
+
+
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        .daily-forecast {
+            --#{$prefix}body-bg: #1d2024;
+        }
+    }
+}

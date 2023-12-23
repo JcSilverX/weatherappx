@@ -1,0 +1,11 @@
+@use '../abstracts/' as *;
+
+.copyright {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    .vr {
+        opacity: .85;
+    }
+}

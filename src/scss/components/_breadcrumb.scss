@@ -1,0 +1,41 @@
+@use '../abstracts/' as *;
+
+%css-vars {
+    --#{$prefix}breadcrumb-padding-x: #{$breadcrumb-padding-x};
+    --#{$prefix}breadcrumb-padding-y: #{$breadcrumb-padding-y};
+    --#{$prefix}breadcrumb-margin-bottom: #{$breadcrumb-margin-bottom};
+    --#{$prefix}breadcrumb-font-size: #{$breadcrumb-font-size};
+    --#{$prefix}breadcrumb-bg: #{$breadcrumb-bg};
+    --#{$prefix}breadcrumb-border-radius: #{$breadcrumb-border-radius};
+    --#{$prefix}breadcrumb-divider-color: #{$breadcrumb-divider-color};
+    --#{$prefix}breadcrumb-item-padding-x: #{$breadcrumb-item-padding-x};
+    --#{$prefix}breadcrumb-item-active-color: #{$breadcrumb-active-color};
+}
+.breadcrumb {
+    @extend %css-vars;
+
+    display: flex;
+    flex-wrap: wrap;
+    font-size: var(--#{$prefix}breadcrumb-font-size);
+    background: var(--#{$prefix}breadcrumb-bg);
+    margin-bottom: var(--#{$prefix}breadcrumb-margin-bottom);
+    @include border-radius(var(--#{$prefix}breadcrumb-border-radius));
+    
+
+    &__item {
+        + .breadcrumb__item {
+            padding-left: var(--#{$prefix}breadcrumb-item-padding-x);
+
+            &::before {
+                content: var(--#{$prefix}breadcrumb-divider, $breadcrumb-divider);
+                padding-right: var(--#{$prefix}breadcrumb-item-padding-x);
+                color: var(--#{$prefix}breadcrumb-divider-color);
+
+            }
+        }
+
+        &.active {
+            color: var(--#{$prefix}breadcrumb-item-active-color);
+        }
+    }
+}

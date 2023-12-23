@@ -1,0 +1,54 @@
+@use '../abstracts/' as *;
+
+%css-vars {
+    --#{$prefix}carousel-control-color: #{$carousel-control-color};
+    --#{$prefix}carousel-control-width: #{$carousel-control-width};
+    --#{$prefix}carousel-control-opacity: #{$carousel-control-opacity};
+    --#{$prefix}carousel-control-hover-opacity: #{$carousel-control-hover-opacity};
+    --#{$prefix}carousel-control-transition: #{$carousel-control-transition};
+
+    --#{$prefix}carousel-indicator-width: #{$carousel-indicator-width};
+    --#{$prefix}carousel-indicator-height: #{$carousel-indicator-height};
+    --#{$prefix}carousel-indicator-hit-area-height: #{$carousel-indicator-hit-area-height};
+    --#{$prefix}carousel-indicator-spacer: #{$carousel-indicator-spacer};
+    --#{$prefix}carousel-indicator-opacity: #{$carousel-indicator-opacity};
+    --#{$prefix}carousel-indicator-active-bg: #{$carousel-indicator-active-bg};
+    --#{$prefix}carousel-indicator-active-opacity: #{$carousel-indicator-active-opacity};
+    --#{$prefix}carousel-indicator-transition: #{$carousel-indicator-transition};
+
+    --#{$prefix}carousel-caption-width: #{$carousel-caption-width};
+    --#{$prefix}carousel-caption-color: #{$carousel-caption-color};
+    --#{$prefix}carousel-caption-padding-y: #{$carousel-caption-padding-y};
+    --#{$prefix}carousel-caption-spacer: #{$carousel-caption-spacer};
+
+    --#{$prefix}carousel-control-icon-width: #{$carousel-control-icon-width};
+
+    --#{$prefix}carousel-control-prev-icon-bg: #{$carousel-control-prev-icon-bg};
+    --#{$prefix}carousel-control-next-icon-bg: #{$carousel-control-next-icon-bg};
+
+    --#{$prefix}carousel-transition-duration: #{$carousel-transition-duration};
+    --#{$prefix}carousel-transition: #{$carousel-transition};
+}
+
+.carousel {
+    @extend %css-vars;
+
+    &__indicators {
+
+    }
+
+    &__inner {
+
+    }
+
+    &__item {
+
+        &.active {
+        
+        }
+    }
+
+    &__control {
+
+    }
+}

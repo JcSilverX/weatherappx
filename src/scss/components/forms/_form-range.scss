@@ -1,0 +1,81 @@
+@use '../../abstracts/' as *;
+
+.form__range {
+    width: 100%;
+    height: calc(($form-range-thumb-height + $form-range-thumb-focus-box-shadow-width) * 2);
+    padding: 0;
+    appearance: none;
+    background: transparent;
+
+    &:focus {
+        outline: 0;
+        
+        &::-webkit-slider-thumb {
+            box-shadow: $form-range-thumb-focus-box-shadow;
+        }
+        
+        &::-moz-range-thumb {
+            -shadow: $form-range-thumb-focus-box-shadow;
+        }
+    }
+
+    &::-moz-focus-outer {
+        border: 0;
+    }
+
+
+    &::-webkit-slider-thumb {
+        width: $form-range-thumb-width;
+        height: $form-range-thumb-height;
+        margin-top: ($form-range-track-height - $form-range-thumb-height) * .5;
+        appearance: none;
+        @include gradient-bg($form-range-thumb-bg);
+        border: $form-range-thumb-border;
+        @include border-radius($form-range-thumb-border-radius);
+        box-shadow: $form-range-thumb-box-shadow;
+        @include transition($form-range-thumb-transition);
+        
+        &:active {
+            @include gradient-bg($form-range-thumb-active-bg);
+        }
+    }
+
+    &::-moz-range-thumb {
+        width: $form-range-thumb-width;
+        height: $form-range-thumb-height;
+        appearance: none;
+        @include gradient-bg($form-range-thumb-bg);
+        border: $form-range-thumb-border;
+        @include border-radius($form-range-thumb-border-radius);
+        box-shadow: $form-range-thumb-box-shadow;
+        @include transition($form-range-thumb-transition);
+        
+        &:active {
+            @include gradient-bg($form-range-thumb-active-bg);
+        }
+    }
+
+    &::-moz-range-track {
+        width: $form-range-track-width;
+        height: $form-range-track-height;
+        color: transparent;
+        cursor: $form-range-track-cursor;
+        background-color: $form-range-track-bg;
+        border-color: transparent;
+        @include border-radius($form-range-track-border-radius);
+        box-shadow: $form-range-track-box-shadow;
+    }
+
+    &:disabled,
+    &.disabled {
+        pointer-events: none;
+        
+        &::-webkit-slider-thumb {
+            background-color: $form-range-thumb-disabled-bg;
+        }
+        
+        &::-moz-range-thumb {
+            background-color: $form-range-thumb-disabled-bg;
+        }
+    }
+}

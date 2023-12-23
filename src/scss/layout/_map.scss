@@ -1,0 +1,10 @@
+@use '../abstracts/' as *;
+
+#map {
+  height: 100%;
+  width: 100%;
+  max-width: none;
+  border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+  @include border-radius(calc(var(--#{$prefix}border-radius) + 1.5rem));
+}
+  

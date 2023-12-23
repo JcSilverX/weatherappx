@@ -1,0 +1,12 @@
+@use '../abstracts/' as *;
+
+.nav {
+
+    &__item--custom {
+        @include media-breakpoint-down(lg) {
+            position: absolute;
+            left: 0;
+            margin-left: $spacer;
+        }
+    }
+}

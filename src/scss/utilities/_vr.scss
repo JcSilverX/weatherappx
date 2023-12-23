@@ -1,0 +1,10 @@
+@use '../abstracts/' as *;
+
+.vr {
+    display: inline-block;
+    align-self: stretch;
+    width: var(--#{$prefix}border-width);
+    min-height: 1.5em;
+    opacity: .25;
+    background-color: currentColor;
+}

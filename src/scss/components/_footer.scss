@@ -1,0 +1,33 @@
+@use '../abstracts/' as *;
+
+.footer {
+    --#{$prefix}footer-bg: #{$footer-bg};
+    --#{$prefix}footer-min-height: #{$footer-min-height};
+
+    min-height: var(--#{$prefix}footer-min-height);
+
+    background: var(--#{$prefix}footer-bg);
+    display: grid;
+    place-items: center;
+    box-shadow: $footer-box-shadow;
+}
+
+@mixin footer-dark {
+    --#{$prefix}footer-bg: #{$footer-bg-dark};
+}
+
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        @if $color-mode-type == 'media-query' {
+            .footer {
+                @include footer-dark();
+            }
+        } @else {
+            .footer {
+                &.footer {
+                    @include footer-dark();
+                }
+            }
+        }
+    }
+}

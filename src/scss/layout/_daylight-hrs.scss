@@ -1,0 +1,39 @@
+@use '../abstracts/' as *;
+
+.daylight-hrs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc($spacer / 2);
+    text-align: center;
+
+    &__left {
+
+    }
+
+    &__middle {
+        padding-right: 1.6rem;
+        padding-left: 1.6rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        & > .daylight-hrs__text {
+            font-size: 1.5rem;
+            white-space: nowrap;
+        }
+    }
+
+    &__right {
+
+    }
+
+    &__text {
+        font-size: 1.2rem;
+    }
+
+    &__img {
+        height: 2.8rem;
+    }
+}

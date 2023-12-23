@@ -1,0 +1,9 @@
+@use '../abstracts/' as *;
+
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        wx-gauge {
+            --jsx-gauge-cover-bg: #1d2024;
+        }
+    }
+}

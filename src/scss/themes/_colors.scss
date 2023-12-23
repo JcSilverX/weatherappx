@@ -1,0 +1,168 @@
+@use '../abstracts/' as *;
+
+$primary:                                                   $color-blue !default;
+$secondary:                                                 $color-gray-600 !default;
+$success:                                                   $color-green !default;
+$danger:                                                    $color-red !default;
+$warning:                                                   $color-yellow-500 !default;
+$info:                                                      $color-cyan !default;
+$light:                                                     $color-gray-100 !default;
+$dark:                                                      $color-gray-900 !default;
+
+$theme-colors: (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+) !default;
+
+$primary-bg-rgb:                                            to-rgb($primary) !default;
+$secondary-bg-rgb:                                          to-rgb($secondary) !default;
+$success-bg-rgb:                                            to-rgb($success) !default;
+$danger-bg-rgb:                                             to-rgb($danger) !default;
+$warning-bg-rgb:                                            to-rgb($warning) !default;
+$info-bg-rgb:                                               to-rgb($info) !default;
+$light-bg-rgb:                                              to-rgb($light) !default;
+$dark-bg-rgb:                                               to-rgb($dark) !default;
+
+$theme-colors-rgb: (
+    "primary":    $primary-bg-rgb,
+    "secondary":  $secondary-bg-rgb,
+    "success":    $success-bg-rgb,
+    "info":       $info-bg-rgb,
+    "warning":    $warning-bg-rgb,
+    "danger":     $danger-bg-rgb,
+    "light":      $light-bg-rgb,
+    "dark":       $dark-bg-rgb
+) !default;
+
+$primary-text-emphasis:                                     shade-color($primary, 60%) !default;
+$secondary-text-emphasis:                                   shade-color($secondary, 60%) !default;
+$success-text-emphasis:                                     shade-color($success, 60%) !default;
+$info-text-emphasis:                                        shade-color($info, 60%) !default;
+$warning-text-emphasis:                                     shade-color($warning, 60%) !default;
+$danger-text-emphasis:                                      shade-color($danger, 60%) !default;
+$light-text-emphasis:                                       $color-gray-700 !default;
+$dark-text-emphasis:                                        $color-gray-700 !default;
+
+$theme-colors-text-emphasis: (
+    "primary":    $primary-text-emphasis,
+    "secondary":  $secondary-text-emphasis,
+    "success":    $success-text-emphasis,
+    "info":       $info-text-emphasis,
+    "warning":    $warning-text-emphasis,
+    "danger":     $danger-text-emphasis,
+    "light":      $light-text-emphasis,
+    "dark":       $dark-text-emphasis
+) !default;
+
+$primary-bg-subtle:                                         tint-color($primary, 80%) !default;
+$secondary-bg-subtle:                                       tint-color($secondary, 80%) !default;
+$success-bg-subtle:                                         tint-color($success, 80%) !default;
+$info-bg-subtle:                                            tint-color($info, 80%) !default;
+$warning-bg-subtle:                                         tint-color($warning, 80%) !default;
+$danger-bg-subtle:                                          tint-color($danger, 80%) !default;
+$light-bg-subtle:                                           mix($color-gray-100, $color-white) !default;
+$dark-bg-subtle:                                            $color-gray-400 !default;
+
+$theme-colors-bg-subtle: (
+    "primary":    $primary-bg-subtle,
+    "secondary":  $secondary-bg-subtle,
+    "success":    $success-bg-subtle,
+    "info":       $info-bg-subtle,
+    "warning":    $warning-bg-subtle,
+    "danger":     $danger-bg-subtle,
+    "light":      $light-bg-subtle,
+    "dark":       $dark-bg-subtle
+) !default;
+
+$primary-border-subtle:                                     tint-color($primary, 60%) !default;
+$secondary-border-subtle:                                   tint-color($secondary, 60%) !default;
+$success-border-subtle:                                     tint-color($success, 60%) !default;
+$info-border-subtle:                                        tint-color($info, 60%) !default;
+$warning-border-subtle:                                     tint-color($warning, 60%) !default;
+$danger-border-subtle:                                      tint-color($danger, 60%) !default;
+$light-border-subtle:                                       $color-gray-200 !default;
+$dark-border-subtle:                                        $color-gray-500 !default;
+
+$theme-colors-border-subtle: (
+    "primary":    $primary-border-subtle,
+    "secondary":  $secondary-border-subtle,
+    "success":    $success-border-subtle,
+    "info":       $info-border-subtle,
+    "warning":    $warning-border-subtle,
+    "danger":     $danger-border-subtle,
+    "light":      $light-border-subtle,
+    "dark":       $dark-border-subtle
+) !default;
+
+
+$theme-colors-text-emphasis-dark:                           null !default;
+$theme-colors-bg-subtle-dark:                               null !default;
+$theme-colors-border-subtle-dark:                           null !default;
+
+$primary-border-subtle-dark:                                shade-color($primary, 40%) !default;
+$secondary-border-subtle-dark:                              shade-color($secondary, 40%) !default;
+$success-border-subtle-dark:                                shade-color($success, 40%) !default;
+$info-border-subtle-dark:                                   shade-color($info, 40%) !default;
+$warning-border-subtle-dark:                                shade-color($warning, 40%) !default;
+$danger-border-subtle-dark:                                 shade-color($danger, 40%) !default;
+$light-border-subtle-dark:                                  $color-gray-700 !default;
+$dark-border-subtle-dark:                                   $color-gray-800 !default;
+
+$primary-text-emphasis-dark:                                tint-color($primary, 40%) !default;
+$secondary-text-emphasis-dark:                              tint-color($secondary, 40%) !default;
+$success-text-emphasis-dark:                                tint-color($success, 40%) !default;
+$info-text-emphasis-dark:                                   tint-color($info, 40%) !default;
+$warning-text-emphasis-dark:                                tint-color($warning, 40%) !default;
+$danger-text-emphasis-dark:                                 tint-color($danger, 40%) !default;
+$light-text-emphasis-dark:                                  $color-gray-100 !default;
+$dark-text-emphasis-dark:                                   $color-gray-300 !default;
+
+$primary-bg-subtle-dark:                                    shade-color($primary, 80%) !default;
+$secondary-bg-subtle-dark:                                  shade-color($secondary, 80%) !default;
+$success-bg-subtle-dark:                                    shade-color($success, 80%) !default;
+$info-bg-subtle-dark:                                       shade-color($info, 80%) !default;
+$warning-bg-subtle-dark:                                    shade-color($warning, 80%) !default;
+$danger-bg-subtle-dark:                                     shade-color($danger, 80%) !default;
+$light-bg-subtle-dark:                                      $color-gray-800 !default;
+$dark-bg-subtle-dark:                                       mix($color-gray-800, $color-black) !default;
+
+@if $enable-dark-mode {
+    $theme-colors-text-emphasis-dark: (
+        "primary": $primary-text-emphasis-dark,
+        "secondary": $secondary-text-emphasis-dark,
+        "success": $success-text-emphasis-dark,
+        "info": $info-text-emphasis-dark,
+        "warning": $warning-text-emphasis-dark,
+        "danger": $danger-text-emphasis-dark,
+        "light": $light-text-emphasis-dark,
+        "dark": $dark-text-emphasis-dark,
+    ) !default;
+
+    $theme-colors-bg-subtle-dark: (
+        "primary": $primary-bg-subtle-dark,
+        "secondary": $secondary-bg-subtle-dark,
+        "success": $success-bg-subtle-dark,
+        "info": $info-bg-subtle-dark,
+        "warning": $warning-bg-subtle-dark,
+        "danger": $danger-bg-subtle-dark,
+        "light": $light-bg-subtle-dark,
+        "dark": $dark-bg-subtle-dark,
+    ) !default;
+
+    $theme-colors-border-subtle-dark: (
+        "primary": $primary-border-subtle-dark,
+        "secondary": $secondary-border-subtle-dark,
+        "success": $success-border-subtle-dark,
+        "info": $info-border-subtle-dark,
+        "warning": $warning-border-subtle-dark,
+        "danger": $danger-border-subtle-dark,
+        "light": $light-border-subtle-dark,
+        "dark": $dark-border-subtle-dark,
+    ) !default;
+}

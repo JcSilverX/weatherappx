@@ -1,0 +1,62 @@
+@use '../abstracts/' as *;
+
+.table {
+    width: 100%;
+    // margin-bottom: $spacer;
+    vertical-align: top;
+    border-color: var(--#{$prefix}border-color);
+
+    > :not(caption) > * > * {
+        padding: 1rem .8rem;
+        border-bottom-width: var(--#{$prefix}border-width);
+    }
+
+    > tbody {
+        vertical-align: inherit;
+
+        > tr:last-child {
+            border-bottom-width: 0 !important;
+            border-bottom-color: transparent !important;
+        }
+    }
+
+    thead {
+        vertical-align: bottom;
+
+        > tr > * {
+            font-weight: $font-weight-900;
+        }
+    }
+}
+
+.table--bordered {
+    > :not(caption) > * {
+        border-width: var(--#{$prefix}border-width) 0;
+
+        > * {
+            border-width: 0 var(--#{$prefix}border-width);
+        }
+    }
+}
+
+.table--borderless {
+    > :not(caption) > * > * {
+        border-bottom-width: 0;
+    }
+    
+    > :not(:first-child) {
+        border-top-width: 0;
+    }
+}
+
+.table--active {
+    color: var(--#{$prefix}emphasis-color);
+    background: rgba(var(--#{$prefix}emphasis-color-rgb), .1);
+}
+
+.table--hover {
+    > tbody > tr:hover > * {
+        color: var(--#{$prefix}emphasis-color);
+        background: rgba(var(--#{$prefix}emphasis-color-rgb), .075);
+    }
+}

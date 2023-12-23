@@ -1,0 +1,61 @@
+@use '../abstracts/' as *;
+
+.hourly-forecast {
+    // background: rgba($color-black, .125);
+    // background: var(--#{$prefix}secondary-bg);
+    background: var(--#{$prefix}body-bg);
+    padding: $spacer;
+    margin-bottom: $spacer;
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+    @include border-radius(calc(var(--#{$prefix}border-radius) + 1.5rem));
+
+    & > .second-heading {
+        font-size: $h4-font-size;
+        margin-bottom: .5rem;
+    }
+
+    &__content {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        gap: $spacer;
+        text-align: center;
+        white-space: nowrap;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        padding-bottom: 1.2em;
+    
+        & > .card {
+            --#{$prefix}card-cap-bg: transparent;
+            --#{$prefix}card-border-width: 0;
+            --#{$prefix}card-border-color: transparent;
+            --#{$prefix}card-cap-padding-y: 0;
+            --#{$prefix}card-cap-padding-x: 0;
+            --#{$prefix}card-bg: inherit;
+    
+            &__header {
+    
+            }
+    
+            &__body {
+                
+            }
+    
+            &__footer {
+    
+            }
+        }
+    }
+    
+    @media (max-width: 145em) {
+        max-width: calc(100vw - calc($spacer * 2));  
+    }
+}
+
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        .hourly-forecast {
+            --#{$prefix}body-bg: #1d2024;
+        }
+    }
+}

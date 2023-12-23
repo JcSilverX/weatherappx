@@ -1,0 +1,110 @@
+@use '../../abstracts/' as *;
+
+.input__group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+  
+    > .form__control,
+    > .form__select,
+    > .form-floating {
+        position: relative;
+        flex: 1 1 auto;
+        width: 1%;
+        min-width: 0;
+    }
+  
+    > .form__control:focus,
+    > .form__select:focus,
+    > .form__floating:focus-within {
+        z-index: 5;
+    }
+
+    .btn {
+        position: relative;
+        z-index: 2;
+  
+        &:focus {
+            z-index: 5;
+        }
+    }
+}
+  
+  
+.input__group-text {
+    display: flex;
+    align-items: center;
+    padding: $input-group-addon-padding-y $input-group-addon-padding-x;
+    font-size: $input-font-size;
+    font-weight: $input-group-addon-font-weight;
+    line-height: $input-line-height;
+    color: $input-group-addon-color;
+    text-align: center;
+    white-space: nowrap;
+    background-color: $input-group-addon-bg;
+    border: $input-border-width solid $input-group-addon-border-color;
+    @include border-radius($input-border-radius);
+}
+  
+  
+.input__group--lg > .form__control,
+.input__group--lg > .form__select,
+.input__group--lg > .input__group-text,
+.input__group--lg > .btn {
+    padding: $input-padding-y-lg $input-padding-x-lg;
+    font-size: $input-font-size-lg;
+    @include border-radius($input-border-radius-lg);
+}
+
+.input__group--sm > .form__control,
+.input__group--sm > .form__select,
+.input__group--sm > .input__group-text,
+.input__group--sm > .btn {
+    padding: $input-padding-y-sm $input-padding-x-sm;
+    font-size: $input-font-size-sm;
+    @include border-radius($input-border-radius-sm);
+}
+  
+.input__group-lg > .form__select,
+.input__group-sm > .form__select {
+    padding-right: $form-select-padding-x + $form-select-indicator-padding;
+}
+  
+  
+.input__group {
+    &:not(.has-validation) {
+        > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form__floating),
+        > .dropdown-toggle:nth-last-child(n + 3),
+        > .form__floating:not(:last-child) > .form__control,
+        > .form__floating:not(:last-child) > .form__select {
+            @include border-end-radius(0);
+        }
+    }
+    
+    &.has-validation {
+        > :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu):not(.form__floating),
+        > .dropdown-toggle:nth-last-child(n + 4),
+        > .form__floating:nth-last-child(n + 3) > .form__control,
+        > .form__floating:nth-last-child(n + 3) > .form__select {
+            @include border-end-radius(0);
+        }
+    }
+  
+    // $validation-messages: "";
+    
+    // @each $state in map-keys($form-validation-states) {
+    //     $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
+    // }
+    
+    // > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
+    //     margin-left: calc(#{$input-border-width} * -1);
+    //     @include border-start-radius(0);
+    // }
+    
+    > .form__floating:not(:first-child) > .form__control,
+    > .form__floating:not(:first-child) > .form__select {
+        @include border-start-radius(0);
+    }
+}

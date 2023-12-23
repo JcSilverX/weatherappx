@@ -1,0 +1,177 @@
+@use '../abstracts/' as *;
+
+%css-vars {
+    --#{$prefix}dropdown-zindex: #{$zindex-dropdown};
+    --#{$prefix}dropdown-min-width: #{$dropdown-min-width};
+    --#{$prefix}dropdown-padding-x: #{$dropdown-padding-x};
+    --#{$prefix}dropdown-padding-y: #{$dropdown-padding-y};
+    --#{$prefix}dropdown-spacer: #{$dropdown-spacer};
+    --#{$prefix}dropdown-font-size: #{$dropdown-font-size};
+    --#{$prefix}dropdown-color: #{$dropdown-color};
+    --#{$prefix}dropdown-bg: #{$dropdown-bg};
+    --#{$prefix}dropdown-border-color: #{$dropdown-border-color};
+    --#{$prefix}dropdown-border-radius: #{$dropdown-border-radius};
+    --#{$prefix}dropdown-border-width: #{$dropdown-border-width};
+    --#{$prefix}dropdown-inner-border-radius: #{$dropdown-inner-border-radius};
+    --#{$prefix}dropdown-divider-bg: #{$dropdown-divider-bg};
+    --#{$prefix}dropdown-divider-margin-y: #{$dropdown-divider-margin-y};
+    --#{$prefix}dropdown-box-shadow: #{$dropdown-box-shadow};
+    --#{$prefix}dropdown-link-color: #{$dropdown-link-color};
+    --#{$prefix}dropdown-link-hover-color: #{$dropdown-link-hover-color};
+    --#{$prefix}dropdown-link-hover-bg: #{$dropdown-link-hover-bg};
+    --#{$prefix}dropdown-link-active-color: #{$dropdown-link-active-color};
+    --#{$prefix}dropdown-link-active-bg: #{$dropdown-link-active-bg};
+    --#{$prefix}dropdown-link-disabled-color: #{$dropdown-link-disabled-color};
+    --#{$prefix}dropdown-item-padding-x: #{$dropdown-item-padding-x};
+    --#{$prefix}dropdown-item-padding-y: #{$dropdown-item-padding-y};
+    --#{$prefix}dropdown-header-color: #{$dropdown-header-color};
+    --#{$prefix}dropdown-header-padding-x: #{$dropdown-header-padding-x};
+    --#{$prefix}dropdown-header-padding-y: #{$dropdown-header-padding-y};
+}
+
+.dropdown {
+    @extend %css-vars;
+
+    position: relative;
+
+    &-menu {
+        position: absolute;
+        z-index: var(--#{$prefix}dropdown-zindex);
+        min-width: var(--#{$prefix}dropdown-min-width);
+        padding: var(--#{$prefix}dropdown-padding-y) var(--#{$prefix}dropdown-padding-x);
+        top: calc(100% + 1rem);
+        margin: 0;
+        margin: .5rem;
+        font-size: var(--#{$prefix}dropdown-font-size);
+        color: var(--#{$prefix}dropdown-color);
+        text-align: left;
+        list-style: none;
+        background-color: var(--#{$prefix}dropdown-bg);
+        background-clip: padding-box;
+        border: var(--#{$prefix}dropdown-border-width) solid var(--#{$prefix}dropdown-border-color);
+        @include border-radius(var(--#{$prefix}dropdown-border-radius));
+        box-shadow: var(--#{$prefix}box-shadow);
+
+        
+        display: none;
+        pointer-events: none;
+
+        max-height: calc(100dvh - 14rem);
+        max-width: calc(100vw - 3.2rem);
+        overflow-y: auto;
+
+        &.hiding {
+            animation: slide-up-Y 150ms ease-in-out forwards;
+        }
+
+        &.show {
+            pointer-events: auto;
+            animation: slide-down-Y 150ms ease-in-out forwards;
+        }
+
+        &__item {
+            display: block;
+            width: 100%;
+            padding: var(--#{$prefix}dropdown-item-padding-y) var(--#{$prefix}dropdown-item-padding-x);
+            clear: both;
+            font-weight: $font-weight-400;
+            color: var(--#{$prefix}dropdown-link-color);
+            text-align: inherit;
+            text-decoration: if($link-decoration == none, null, none);
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+            @include border-radius(var(--#{$prefix}dropdown-item-border-radius, 0));
+            cursor: pointer;
+
+        &:hover,
+            &:focus {
+                color: var(--#{$prefix}dropdown-link-hover-color);
+                text-decoration: if($link-hover-decoration == underline, none, null);
+                @include gradient-bg(var(--#{$prefix}dropdown-link-hover-bg));
+            }
+
+            &.active,
+            &:active {
+                color: var(--#{$prefix}dropdown-link-active-color);
+                text-decoration: none;
+                @include gradient-bg(var(--#{$prefix}dropdown-link-active-bg));
+            }
+
+            &.disabled,
+            &:disabled {
+                color: var(--#{$prefix}dropdown-link-disabled-color);
+                pointer-events: none;
+                background-color: transparent;
+                background-image: if($enable-gradients, none, null);
+            }
+        }
+    }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+        .dropdown-menu#{$infix}--start {
+            right: auto;
+            left: 0;
+        }
+
+        .dropdown-menu#{$infix}--end {
+            right: 0;
+            left: auto;
+        }
+    }
+}
+
+.dropup {
+    .dropdown-menu[data-jsx-placement="top-start"] {
+        top: auto;
+        bottom: 100%;
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+.dropend {
+    .dropdown-menu[data-jsx-placement="right-start"] {
+        top: -50%;
+        right: auto;
+        left: 100%;
+        margin-top: 0;
+        margin-left: 1rem;
+    }
+}
+
+.dropstart {
+    .dropdown-menu[data-jsx-placement="left-start"] {
+        top: -50%;
+        right: 100%;
+        left: auto;
+        margin-top: 0;
+        margin-right: 1rem;
+    }
+}
+
+@keyframes slide-down-Y {
+    0% {
+        opacity: 0;
+        transform: translateY(-1.6rem);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes slide-up-Y {
+    0% {
+        opacity: 1;
+        transform: none;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-1.6rem);
+    }
+}

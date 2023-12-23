@@ -1,0 +1,26 @@
+@use '../abstracts/' as *;
+
+.bookmarks {
+
+    & > .second-heading {
+        font-size: 1.4rem;
+        text-align: start;
+    }
+
+    &-btn {
+        --jsx-btn-color: var(--color-gray-400);
+        --jsx-btn-hover-color: var(--color-gray-500);
+
+        margin-left: auto;
+        padding: 0;
+        box-shadow: none;
+
+        &__icon {
+            font-size: 1.4rem;
+
+            &--bookmarked {
+                color: var(--color-blue-400);
+            }
+        }
+    }
+}

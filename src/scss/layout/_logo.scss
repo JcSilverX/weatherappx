@@ -1,0 +1,10 @@
+@use '../abstracts/' as *;
+
+.logo {
+
+    &--md {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

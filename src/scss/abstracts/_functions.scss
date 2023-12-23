@@ -1,0 +1,98 @@
+@use './breakpoints' as *;
+@use './variables' as *;
+
+@use "sass:meta";
+
+@function to-rgb($value) {
+    @return red($value), green($value), blue($value);
+}
+
+@function tint-color($color, $weight) {
+    @return mix(white, $color, $weight);
+}
+
+@function shade-color($color, $weight) {
+    @return mix(black, $color, $weight);
+}
+
+@function shift-color($color, $weight) {
+  @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
+}
+
+
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+    $n: index($breakpoint-names, $name);
+    @if not $n {
+        @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
+    }
+    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+    $min: map-get($breakpoints, $name);
+    @return if($min != 0, $min, null);
+}
+
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+    $max: map-get($breakpoints, $name);
+    @return if($max and $max > 0, $max - .02, null);
+}
+
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+    @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+@function valid-radius($radius) {
+    $return: ();
+    @each $value in $radius {
+        @if type-of($value) == number {
+            $return: append($return, max($value, 0));
+        } @else {
+            $return: append($return, $value);
+        }
+    }
+    @return $return;
+}
+
+
+@function map-next($name, $map: $map, $map-names: map-keys($map)) {
+    $n: index($map-names, $name);
+
+    @if not $n {
+        @error "map name `#{$name}` not found in `#{$map}`.";
+    }
+    @return if($n < length($map-names), nth($map-names, $n + 1), null);
+}
+
+@function map-prev($name, $map: $map, $map-names: map-keys($map)) {
+    $n: index($map-names, $name);
+
+    @if not $n {
+        @error "map name `#{$name}` not found in `#{$map}`.";
+    }
+    @return if($n - 1 < 1, null, nth($map-names, $n - 1));
+}
+
+@function map-loop($map, $func, $args...) {
+    $_map: ();
+
+    @each $key, $value in $map {
+        $_args: ();
+        @each $arg in $args {
+            $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+        }
+        $_map: map-merge($_map, ($key: meta.call(meta.get-function($func), $_args...)));
+    }
+    @return $_map;
+}
+
+
+@function rgba-css-var($identifier, $target) {
+    @if $identifier == "body" and $target == "bg" {
+        @return rgba(var(--#{$prefix}#{$identifier}-bg-rgb), var(--#{$prefix}#{$target}-opacity));
+    } @if $identifier == "body" and $target == "text" {
+        @return rgba(var(--#{$prefix}#{$identifier}-color-rgb), var(--#{$prefix}#{$target}-opacity));
+    } @else {
+        @return rgba(var(--#{$prefix}#{$identifier}-rgb), var(--#{$prefix}#{$target}-opacity));
+    }
+}
