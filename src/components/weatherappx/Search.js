@@ -52,7 +52,7 @@ export default class Search extends Modal {
 
     const searchText = searchInputEl.value;
 
-    const forbiddenPattern = /[^A-Za-z0-9]+/g;
+    const forbiddenPattern = /[^A-Za-z0-9\s]+/g;
     const patternMatch = forbiddenPattern.test(searchText);
 
     searchResultsHelpEl.classList.add('visually-hidden');
