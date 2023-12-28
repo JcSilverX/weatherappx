@@ -19,6 +19,7 @@
 <p>A real-time weather application that provides current weather conditions, 24-hour forecasts, and 10-day forecasts in advance.</p>
 
 ## Status
+<p>Coming soon.</p>
 
 ## Creator
 **JcSilverX**
