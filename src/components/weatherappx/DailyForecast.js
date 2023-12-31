@@ -30,7 +30,7 @@ export const parseDailyForecast = () => {
 
 export const renderDailyForecast = (daily) => {
   const dailyForecastEl = elementFromHtml('<section class="daily-forecast"></section>');
-  const secondHeading = elementFromHtml('<h2 class="second-heading">HOURLY FORECAST</h2>');
+  const secondHeading = elementFromHtml('<h2 class="second-heading">DAILY FORECAST</h2>');
   const dailyForecastListEl = elementFromHtml('<ul class="daily-forecast__list grid" style="--jsx-rows: 10; --jsx-columns: 5;"></ul>');
 
   weatherDetailsContentEl.insertAdjacentElement('beforeend', dailyForecastEl);
