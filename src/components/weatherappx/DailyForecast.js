@@ -43,7 +43,7 @@ export const renderDailyForecast = (daily) => {
     const newDay = `
       <li class="daily-forecast__item">${dateTimeFormatter({ weekday: 'long' }, day.timestamp)}</li>
       <li class="daily-forecast__item">
-        <img src="https://raw.githubusercontent.com/JcSilverX/icons-jsx/main/weather/${ICONS_MAP.get(day.weatherCode)}.png" alt="" width="20" height="20" />
+        <img src="https://raw.githubusercontent.com/JcSilverX/icons-jsx/main/weather/${ICONS_MAP.get(day.weatherCode)}.png" alt='' width="20" height="20" />
       </li>
       <li class="daily-forecast__item">${(day.precipitation > 0) ? `${day.precipitation}in` : ''}</li>
       <li class="daily-forecast__item">${day.maxTemp}&deg;</li>
