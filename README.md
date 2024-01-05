@@ -13,7 +13,11 @@
   weatherappx
 </p>
 
-<p align="center">Real-time weather application.</p>
+<p align="center">
+	Real-time weather application.
+	<br />
+	<a href="https://www.weatherappx.com/"><strong>Explore the app »</strong></a>
+</p>
 
 ## weatherappx
 <p>A real-time weather application that provides current weather conditions, 24-hour forecasts, and 10-day forecasts in advance.</p>
