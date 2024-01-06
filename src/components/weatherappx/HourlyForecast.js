@@ -7,6 +7,8 @@ import {
   weatherDetailsContentEl,
 } from '../../common';
 
+import renderIcons from './Icons';
+
 export const parseHourlyForecast = () => {
   // horly
   const {
@@ -59,6 +61,8 @@ export const renderHourlyForecast = (hourly) => {
   hourlyForecastEl.insertAdjacentElement('beforeend', hourlyForecastContentEl);
 
   hourly.slice(0, 25).forEach((hour) => {
+    renderIcons(hour.isDay);
+
     const hr = `
       <div class="card">
         <div class="card__header">
